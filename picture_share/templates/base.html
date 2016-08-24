@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="Keywords" content="">
+
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% block css %}{% endblock %}">
+</head>
+<body>
+    <div class="container">
+        <section>
+            <header class="header">
+                <div class="header-cont">
+                    <a class="logo" href="/">logo</a>
+                    <div class="web-menu">
+                        {% if current_user.is_authenticated %}
+                        <table>
+                            <tr>
+                                <td>
+                                    <a class="profile-ico" href="/profile/{{current_user.id}}">{{current_user.username}}</a>
+                                </td>
+                                <td>
+                                    <a class="logout-ico" href="/logout/">退出登录</a>
+                                </td>
+                            </tr>
+                        </table>
+                        {% else %}
+                        <a class="profile-ico" href="/reglogin/">登陆/注册</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </header>
+
+            {% block content %}{% endblock %}
+
+            <footer class="footer">
+                <div class="footer-cont" style="max-width:935px;">
+                    <nav>
+                        <ul class="footer-items">
+                            <li>
+                                <a href="http://anboqing.github.io/">blog</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <span class="copy-right">© 2016 anboqing</span>
+                </div>
+            </footer>
+        </section>
+    </div>
+</body>
+{% block js %}{% endblock %}
+</html>
+
