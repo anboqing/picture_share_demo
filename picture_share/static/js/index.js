@@ -1,40 +1,40 @@
 $(function () {
     var oExports = {
         initialize: fInitialize,
-        // äÖÈ¾¸ü¶àÊı¾İ
+        // æ¸²æŸ“æ›´å¤šæ•°æ®
         renderMore: fRenderMore,
-        // ÇëÇóÊı¾İ
+        // è¯·æ±‚æ•°æ®
         requestData: fRequestData,
-        // ¼òµ¥µÄÄ£°åÌæ»»
+        // ç®€å•çš„æ¨¡æ¿æ›¿æ¢
         tpl: fTpl
     };
-    // ³õÊ¼»¯Ò³Ãæ½Å±¾
+    // åˆå§‹åŒ–é¡µé¢è„šæœ¬
     oExports.initialize();
 
     function fInitialize() {
         var that = this;
-        // ³£ÓÃÔªËØ
+        // å¸¸ç”¨å…ƒç´ 
         that.listEl = $('#image_list__');
         console.log(that.listEl)
-        // ³õÊ¼»¯Êı¾İ
+        // åˆå§‹åŒ–æ•°æ®
         //that.uid = window.uid;
         that.page = 1;
         that.pageSize = 5;
         that.listHasNext = true;
-        // °ó¶¨ÊÂ¼ş
+        // ç»‘å®šäº‹ä»¶
         $('.js-load-more').on('click', function (oEvent) {
             var oEl = $(oEvent.currentTarget);
             var sAttName = 'data-load';
-            // ÕıÔÚÇëÇóÊı¾İÖĞ£¬ºöÂÔµã»÷ÊÂ¼ş
+            // æ­£åœ¨è¯·æ±‚æ•°æ®ä¸­ï¼Œå¿½ç•¥ç‚¹å‡»äº‹ä»¶
             if (oEl.attr(sAttName) === '1') {
                 return;
             }
-            // Ôö¼Ó±ê¼Ç£¬±ÜÃâÇëÇó¹ı³ÌÖĞµÄÆµ·±µã»÷
+            // å¢åŠ æ ‡è®°ï¼Œé¿å…è¯·æ±‚è¿‡ç¨‹ä¸­çš„é¢‘ç¹ç‚¹å‡»
             oEl.attr(sAttName, '1');
             that.renderMore(function () {
-                // È¡Ïûµã»÷±ê¼ÇÎ»£¬¿ÉÒÔ½øĞĞÏÂÒ»´Î¼ÓÔØ
+                // å–æ¶ˆç‚¹å‡»æ ‡è®°ä½ï¼Œå¯ä»¥è¿›è¡Œä¸‹ä¸€æ¬¡åŠ è½½
                 oEl.removeAttr(sAttName);
-                // Ã»ÓĞÊı¾İÒş²Ø¼ÓÔØ¸ü¶à°´Å¥
+                // æ²¡æœ‰æ•°æ®éšè—åŠ è½½æ›´å¤šæŒ‰é’®
                 !that.listHasNext && oEl.hide();
             });
         });
@@ -42,7 +42,7 @@ $(function () {
 
     function fRenderMore(fCb) {
         var that = this;
-        // Ã»ÓĞ¸ü¶àÊı¾İ£¬²»´¦Àí
+        // æ²¡æœ‰æ›´å¤šæ•°æ®ï¼Œä¸å¤„ç†
         if (!that.listHasNext) {
             return;
         }
@@ -51,11 +51,11 @@ $(function () {
             page: that.page + 1,
             pageSize: that.pageSize,
             call: function (oResult) {
-                // ÊÇ·ñÓĞ¸ü¶àÊı¾İ
+                // æ˜¯å¦æœ‰æ›´å¤šæ•°æ®
                 that.listHasNext = !!oResult.has_next && (oResult.images || []).length > 0;
-                // ¸üĞÂµ±Ç°Ò³Ãæ
+                // æ›´æ–°å½“å‰é¡µé¢
                 that.page++;
-                // äÖÈ¾Êı¾İ
+                // æ¸²æŸ“æ•°æ®
                 var sHtml = '';
                 $.each(oResult.images, function (nIndex, oImage) {
                     sHtml_part1 = that.tpl([
@@ -79,8 +79,8 @@ $(function () {
               '  <ul class="discuss-list">',
                    ' <li class="more-discuss">',
                        ' <a>',
-                           ' <span> È«²¿ </span><span class="">#{comment_count}</span>',
-                            '<span> ÌõÆÀÂÛ</span></a>',
+                           ' <span> å…¨éƒ¨ </span><span class="">#{comment_count}</span>',
+                            '<span> æ¡è¯„è®º</span></a>',
                     '</li>'].join(''), oImage);
                     sHtml_part2 = ' ';
 
@@ -111,7 +111,7 @@ $(function () {
                 sHtml && that.listEl.append(sHtml);
             },
             error: function () {
-                alert('³öÏÖ´íÎó£¬ÇëÉÔºóÖØÊÔ');
+                alert('å‡ºç°é”™è¯¯ï¼Œè¯·ç¨åé‡è¯•');
             },
             always: fCb
         });
