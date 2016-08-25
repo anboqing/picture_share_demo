@@ -79,7 +79,7 @@ $(function () {
               '  <ul class="discuss-list">',
                    ' <li class="more-discuss">',
                        ' <a>',
-                           ' <span>全部 </span><span class="">#{comment_count}</span>',
+                           ' <span> 全部 </span><span class="">#{comment_count}</span>',
                             '<span> 条评论</span></a>',
                     '</li>'].join(''), oImage);
                     sHtml_part2 = ' ';
@@ -101,13 +101,6 @@ $(function () {
 
                     sHtml_part3 =    that.tpl([
               '  </ul>',
-               ' <section class="discuss-edit">',
-                  '  <a class="icon-heart"></a>',
-                  '  <form>',
-                   '     <input placeholder="添加评论..." type="text">',
-                  '  </form>',
-                  '  <button class="more-info">更多选项</button>',
-               ' </section>',
            ' </div>',
 
        ' </article>  '

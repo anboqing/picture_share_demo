@@ -46,7 +46,7 @@
                     </span>
                 </li>
                 -->
-                {% for comment in comments%}
+                {% for comment in image.comments%}
                 <li>
                     <!-- <a class=" icon-remove" title="删除评论"></a> -->
                     <a class="_4zhc5 _iqaka" title="{{comment.user.username}}" href="/profile/{{comment.user.id}}">{{comment.user.username}}</a>
