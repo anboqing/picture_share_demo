@@ -206,7 +206,7 @@ def index_images(page, per_page):
         imgvo = {'image_id': image.id,
                  'image_url': image.url,
                  'username':image.user.username,
-                 'comment_count': min(2,len(image.comments)),
+                 'comment_count': len(image.comments),
                  'user_id': image.user_id,
                  'head_url':image.user.avatar,
                  'create_date':str(image.create_date),
